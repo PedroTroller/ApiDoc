@@ -1,0 +1,20 @@
+{
+    "name": "pedrotroller/api-doc",
+    "description": "Extension for NelmioApiDoc, add translation support",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {
+        "nelmio/api-doc-bundle": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PedroTroller\\ApiDoc\\": "src/PedroTroller/ApiDoc/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require-dev": {
+        "pedrotroller/php-cs-custom-fixer": "^1.3"
+    }
+}
