@@ -1,0 +1,28 @@
+parameters:
+    nelmio_api_doc.extractor.api_doc_extractor.class:  PedroTroller\ApiDoc\Extractor\ApiDocExtractor
+
+services:
+    api_doc.route.description_builder:
+        class: PedroTroller\ApiDoc\Route\DescriptionBuilder
+        arguments:
+            - '@api_doc.route.name_finder'
+            - '@translator'
+
+    api_doc.route.name_finder:
+        class: PedroTroller\ApiDoc\Route\NameFinder
+        arguments:
+            - '@router'
+
+    api_doc.handler.description_handler:
+        class: PedroTroller\ApiDoc\Handler\DescriptionHandler
+        arguments:
+            - '@api_doc.route.description_builder'
+        tags:
+            - { name: nelmio_api_doc.extractor.handler }
+
+    api_doc.handler.documentation_handler:
+        class: PedroTroller\ApiDoc\Handler\DocumentationHandler
+        arguments:
+            - '@api_doc.route.description_builder'
+        tags:
+            - { name: nelmio_api_doc.extractor.handler }
